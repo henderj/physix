@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.controls {
+    width: 620px;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+}
+
+input {
+    width: 60px;
+}
+
+label {
+    color: white;
+}

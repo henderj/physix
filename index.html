@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="scripts/vector2.js"></script>
+  <script src="scripts/scene.js"></script>
+  <script src="scripts/script.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="controls">
+      <button @click="doToggleSimulation">{{scene.running ? 'Stop' : 'Start'}}</button>
+      <button @click="doStep">Step</button>
+      <div>
+        <label for="timeScale">Speed: </label>
+        <input v-model="scene.timeScale" type="number" id="timeScale" name="timeScale">
+      </div>
+      <div>
+        <label for="ballCount">Ball count: </label>
+        <input v-model="ballCount"
+          @change="() => { if(ballCount < 1) this.ballCount = 1; if(ballCount > 50) this.ballCount = 50;}" type="number"
+          id="ballCount" name="ballCount">
+      </div>
+      <button @click="reset">Reset</button>
+    </div>
+    <div style="margin-top: 7px;">
+      <label for="showVelocity">Show velocity: </label>
+      <input style="width: auto;" v-model="scene.showVelocity" type="checkbox" id="showVelocity" name="showVelocity">
+    </div>
+    <p>FPS: {{fps}}</p>
+    <p>Total Kinetic Energy: {{Number(energy).toLocaleString()}} J</p>
+    <p>Total Momentum: {{Number(momentum).toLocaleString()}} N*s
+      ({{Number(minMomentum).toLocaleString()}}, {{Number(maxMomentum).toLocaleString()}})</p>
+  </div>
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>
